@@ -1,0 +1,8 @@
+/*
+* name;
+*/
+class LoginEvent{
+    constructor(){
+
+    }
+}

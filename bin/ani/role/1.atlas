@@ -1,0 +1,314 @@
+{
+    "frames": {
+        "erlangshen_dz-run_0.png": {
+            "frame": {
+                "h": 256,
+                "idx": 0,
+                "w": 290,
+                "x": 859,
+                "y": 0
+            },
+            "sourceSize": {
+                "h": 279,
+                "w": 323
+            },
+            "spriteSourceSize": {
+                "x": 10,
+                "y": 23
+            }
+        },
+        "erlangshen_dz-run_1.png": {
+            "frame": {
+                "h": 261,
+                "idx": 0,
+                "w": 289,
+                "x": 0,
+                "y": 0
+            },
+            "sourceSize": {
+                "h": 279,
+                "w": 323
+            },
+            "spriteSourceSize": {
+                "x": 14,
+                "y": 18
+            }
+        },
+        "erlangshen_dz-run_2.png": {
+            "frame": {
+                "h": 268,
+                "idx": 0,
+                "w": 287,
+                "x": 290,
+                "y": 0
+            },
+            "sourceSize": {
+                "h": 279,
+                "w": 323
+            },
+            "spriteSourceSize": {
+                "x": 19,
+                "y": 11
+            }
+        },
+        "erlangshen_dz-run_3.png": {
+            "frame": {
+                "h": 272,
+                "idx": 0,
+                "w": 284,
+                "x": 0,
+                "y": 262
+            },
+            "sourceSize": {
+                "h": 279,
+                "w": 323
+            },
+            "spriteSourceSize": {
+                "x": 25,
+                "y": 7
+            }
+        },
+        "erlangshen_dz-run_4.png": {
+            "frame": {
+                "h": 277,
+                "idx": 0,
+                "w": 280,
+                "x": 578,
+                "y": 0
+            },
+            "sourceSize": {
+                "h": 279,
+                "w": 323
+            },
+            "spriteSourceSize": {
+                "x": 31,
+                "y": 2
+            }
+        },
+        "erlangshen_dz-run_5.png": {
+            "frame": {
+                "h": 267,
+                "idx": 0,
+                "w": 286,
+                "x": 285,
+                "y": 269
+            },
+            "sourceSize": {
+                "h": 279,
+                "w": 323
+            },
+            "spriteSourceSize": {
+                "x": 20,
+                "y": 12
+            }
+        },
+        "erlangshen_dz-run_6.png": {
+            "frame": {
+                "h": 256,
+                "idx": 0,
+                "w": 290,
+                "x": 572,
+                "y": 278
+            },
+            "sourceSize": {
+                "h": 279,
+                "w": 323
+            },
+            "spriteSourceSize": {
+                "x": 10,
+                "y": 23
+            }
+        },
+        "erlangshen_dz-stand_0.png": {
+            "frame": {
+                "h": 242,
+                "idx": 0,
+                "w": 244,
+                "x": 812,
+                "y": 755
+            },
+            "sourceSize": {
+                "h": 252,
+                "w": 272
+            },
+            "spriteSourceSize": {
+                "x": 16,
+                "y": 8
+            }
+        },
+        "erlangshen_dz-stand_1.png": {
+            "frame": {
+                "h": 244,
+                "idx": 0,
+                "w": 241,
+                "x": 0,
+                "y": 780
+            },
+            "sourceSize": {
+                "h": 252,
+                "w": 272
+            },
+            "spriteSourceSize": {
+                "x": 16,
+                "y": 6
+            }
+        },
+        "erlangshen_dz-stand_10.png": {
+            "frame": {
+                "h": 242,
+                "idx": 0,
+                "w": 244,
+                "x": 1104,
+                "y": 753
+            },
+            "sourceSize": {
+                "h": 252,
+                "w": 272
+            },
+            "spriteSourceSize": {
+                "x": 16,
+                "y": 8
+            }
+        },
+        "erlangshen_dz-stand_2.png": {
+            "frame": {
+                "h": 245,
+                "idx": 0,
+                "w": 239,
+                "x": 1150,
+                "y": 0
+            },
+            "sourceSize": {
+                "h": 252,
+                "w": 272
+            },
+            "spriteSourceSize": {
+                "x": 16,
+                "y": 5
+            }
+        },
+        "erlangshen_dz-stand_3.png": {
+            "frame": {
+                "h": 247,
+                "idx": 0,
+                "w": 236,
+                "x": 1105,
+                "y": 257
+            },
+            "sourceSize": {
+                "h": 252,
+                "w": 272
+            },
+            "spriteSourceSize": {
+                "x": 17,
+                "y": 3
+            }
+        },
+        "erlangshen_dz-stand_4.png": {
+            "frame": {
+                "h": 247,
+                "idx": 0,
+                "w": 236,
+                "x": 1104,
+                "y": 505
+            },
+            "sourceSize": {
+                "h": 252,
+                "w": 272
+            },
+            "spriteSourceSize": {
+                "x": 17,
+                "y": 3
+            }
+        },
+        "erlangshen_dz-stand_5.png": {
+            "frame": {
+                "h": 248,
+                "idx": 0,
+                "w": 238,
+                "x": 244,
+                "y": 537
+            },
+            "sourceSize": {
+                "h": 252,
+                "w": 272
+            },
+            "spriteSourceSize": {
+                "x": 16,
+                "y": 2
+            }
+        },
+        "erlangshen_dz-stand_6.png": {
+            "frame": {
+                "h": 248,
+                "idx": 0,
+                "w": 239,
+                "x": 572,
+                "y": 535
+            },
+            "sourceSize": {
+                "h": 252,
+                "w": 272
+            },
+            "spriteSourceSize": {
+                "x": 16,
+                "y": 2
+            }
+        },
+        "erlangshen_dz-stand_7.png": {
+            "frame": {
+                "h": 249,
+                "idx": 0,
+                "w": 240,
+                "x": 863,
+                "y": 505
+            },
+            "sourceSize": {
+                "h": 252,
+                "w": 272
+            },
+            "spriteSourceSize": {
+                "x": 16,
+                "y": 1
+            }
+        },
+        "erlangshen_dz-stand_8.png": {
+            "frame": {
+                "h": 247,
+                "idx": 0,
+                "w": 241,
+                "x": 863,
+                "y": 257
+            },
+            "sourceSize": {
+                "h": 252,
+                "w": 272
+            },
+            "spriteSourceSize": {
+                "x": 16,
+                "y": 3
+            }
+        },
+        "erlangshen_dz-stand_9.png": {
+            "frame": {
+                "h": 244,
+                "idx": 0,
+                "w": 243,
+                "x": 0,
+                "y": 535
+            },
+            "sourceSize": {
+                "h": 252,
+                "w": 272
+            },
+            "spriteSourceSize": {
+                "x": 16,
+                "y": 6
+            }
+        }
+    },
+    "meta": {
+        "image": "1.png",
+        "prefix": "1/"
+    }
+}
