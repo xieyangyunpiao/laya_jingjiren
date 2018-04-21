@@ -145,15 +145,16 @@ class CLoaderManager
             if(-1 != index)
             {
 
-              let loadWin:LodingWindow = Core.inst.wndFactory.getWindowByID(CWindowID.LODING_WINDOW);
-              loadWin.loaderPercent = (loaderData.ExtarData - this.$preLoaderMap.length)/loaderData.ExtarData  
+            //  let loadWin:LodingWindow = Core.inst.wndFactory.getWindowByID(CWindowID.LODING_WINDOW);
+            //  loadWin.loaderPercent = (loaderData.ExtarData - this.$preLoaderMap.length)/loaderData.ExtarData  
               this.$preLoaderMap.splice(index,1);
           //    CUtil.Log("预加载资源:"+loaderData.LoaderUrl+"加载完毕")
             }
             if(0 == this.$preLoaderMap.length)
             {
             this.$preLoaderMap = null;
-            CUtil.Log("所有预加载资源加载完毕:"+new Date())
+            CUtil.Log("所有预加载资源加载完毕:"+new Date());
+                   Core.inst.layer.openWindowByID(CWindowID.BATTLE_WINDOW,null);
           //  Core.inst.layer.openWindowByID(CWindowID.BATTLE_WINDOW,null);
             }            
         }
@@ -208,6 +209,15 @@ class CLoaderManager
         this.addLoader(loaderData)
        }
        preMap = null;
+   }
+   /**
+    * 返回预加载资源是否加载完成
+    */
+   public getPreLoaderComBool():boolean
+   {
+         if(null != this.$preLoaderMap)
+         return false;
+         return true;
    }
    //========添加加载=========
     public addLoader(loaderData:LoaderData):void 

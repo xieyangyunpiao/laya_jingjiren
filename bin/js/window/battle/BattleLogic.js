@@ -42,10 +42,16 @@ var BattleLogic = /** @class */ (function () {
      */
     BattleLogic.prototype.getDefRole = function (attackRole) {
         var defArr = [];
-        if (1 == attackRole.attackData["DamageType"]) {
+        /*
+        if(1 == attackRole.attackData["DamageType"])//攻擊目標陣營
+        {
+
         }
-        else {
+        else //輔助己方陣營
+        {
+
         }
+        */
         attackRole = null;
         return defArr;
     };

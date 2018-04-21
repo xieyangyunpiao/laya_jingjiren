@@ -21,6 +21,7 @@ var CWindow = /** @class */ (function (_super) {
         _this.$isWinClose = true; //是否支持统一关闭操作
         _this.$winPreOpenTimer = null; //界面上次打开时间(用于资源释放的依据)
         _this.$winOpenNum = 0; //界面打开次数(用于资源释放的依据)
+        _this.$data = null; //界面数据
         _this.$winValue = 2; //界面权重 1:核心界面 2:普通界面,3:立即销货界面 (用于资源释放的依据)
         _this.$eventMap = []; //注册事件映射表[{target:..,caller:....,type:...,fun:...}]
         _this.$winResUrl = resurl;
@@ -208,6 +209,7 @@ var CWindow = /** @class */ (function (_super) {
           * 设置数据
         */
         set: function (value) {
+            this.$data = value;
         },
         enumerable: true,
         configurable: true

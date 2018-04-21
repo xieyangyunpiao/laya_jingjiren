@@ -21,6 +21,7 @@ var NetCode = /** @class */ (function () {
     NetCode.WSM_S_ONLINE_OK = 15020; // 上线成功
     NetCode.WSM_S_LOGIN_OK = 15021; // 玩家登陆成功收到的第一条消息
     NetCode.WSM_C_HEART = 15022; //心跳
+    NetCode.WSM_S_Drop = 15023; //掉落
     NetCode.WSM_C_AUTH = 10001; // client request login account
     NetCode.WSM_S_AUTH_RULT = 10002; // 登陆结果
     NetCode.WSM_C_CREATE_CHAR = 10003; // 创建角色

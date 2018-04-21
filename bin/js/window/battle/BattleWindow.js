@@ -50,7 +50,7 @@ var BattleWindow = /** @class */ (function (_super) {
     }
     Object.defineProperty(BattleWindow.prototype, "data", {
         set: function (value) {
-            value = { roleData: [[new BattleRoleData(), new BattleRoleData(), new BattleRoleData(), new BattleRoleData()], [new BattleRoleData(), new BattleRoleData(), new BattleRoleData(), new BattleRoleData()]] };
+            value = { roleData: [[new BattleRoleData({ id: 59 }), new BattleRoleData({ id: 60 }), new BattleRoleData({ id: 59 }), new BattleRoleData({ id: 59 })], [new BattleRoleData({ id: 60 }), new BattleRoleData({ id: 60 }), new BattleRoleData({ id: 60 }), new BattleRoleData({ id: 60 })]] };
             this.$battleData = value;
             var arr = [];
             var roleData = value.roleData; //0:自身角色數據 1:地方角色数据
@@ -65,7 +65,7 @@ var BattleWindow = /** @class */ (function (_super) {
                         battleRole.scaleX = -1;
                     }
                     battleRole.y = j * 100;
-                    battleRole.x = i * 800;
+                    battleRole.x = i * 600;
                     battleRole.startX = battleRole.x;
                     battleRole.startY = battleRole.y;
                 }
@@ -86,40 +86,51 @@ var BattleWindow = /** @class */ (function (_super) {
      * 开始战斗
      */
     BattleWindow.prototype.startBattle = function () {
-        var curBattleInfo = this.$battleLogic.getlogicBattleData();
-        var attackRoleMap = curBattleInfo[0];
-        var defRoleDataMap = curBattleInfo[1];
-        var attackRoleModeMap = [];
-        var defRoleModeMap = [];
-        for (var i = 0; i < attackRoleMap.length; i++)
-            attackRoleModeMap.push(this.$battleRoleMap[2].get(attackRoleMap[i]));
-        for (var j = 0; j < defRoleDataMap.length; j++)
-            defRoleModeMap.push(this.$battleRoleMap[2].get(defRoleDataMap[j]));
-        if (attackRoleMap.length > 1) {
-            this.$battleMethod.RolePunch(attackRoleModeMap, defRoleModeMap);
-        }
-        else {
-            curBattleInfo[0].updataRoleData(); //進行角色數據的更新
-            if (1 == curBattleInfo[0].attackData["DamageType"]) {
-                var defroleData = defRoleDataMap.shift();
-                var defrole = void 0;
-                if (1 == curBattleInfo[0].attackData["Type"]) {
-                    if (1 == curBattleInfo[0].attackData["IsTravel"])
-                        this.$battleMethod.PhysicBatches(attackRoleModeMap[0], defRoleModeMap);
-                    else
-                        this.$battleMethod.PhysicsDisposable(attackRoleModeMap[0], defRoleModeMap);
-                }
-                else {
-                    if (1 == curBattleInfo[0].attackData["IsTravel"])
-                        this.$battleMethod.magicBatches(attackRoleModeMap[0], defRoleModeMap);
-                    else
-                        this.$battleMethod.magicDisposable(attackRoleModeMap[0], defRoleModeMap);
-                }
+        this.$battleMethod.RolePunch([this.$battleRoleMap[0][0], this.$battleRoleMap[0][1]], [this.$battleRoleMap[1][0]]);
+        /*
+       let curBattleInfo:Array<any>= this.$battleLogic.getlogicBattleData();
+       let attackRoleMap:Array<BattleRoleData> = curBattleInfo[0];
+       let defRoleDataMap:Array<BattleRoleData> = curBattleInfo[1];
+       let attackRoleModeMap:Array<BattleRole>=[];
+       let defRoleModeMap:Array<BattleRole>=[];
+       for(let i = 0;i < attackRoleMap.length;i++)
+       attackRoleModeMap.push(this.$battleRoleMap[2].get(attackRoleMap[i]));
+       for(let j =0; j < defRoleDataMap.length;j++)
+       defRoleModeMap.push(this.$battleRoleMap[2].get(defRoleDataMap[j]));
+       if(attackRoleMap.length > 1 ) //如果是合體技能
+       {
+         this.$battleMethod.RolePunch(attackRoleModeMap,defRoleModeMap);
+       }
+       else
+       {
+           curBattleInfo[0].updataRoleData();//進行角色數據的更新
+           if(1 == curBattleInfo[0].attackData["DamageType"])//普通攻擊
+           {
+               let defroleData:BattleRoleData = defRoleDataMap.shift();
+               let defrole:BattleRole;
+               if(1 == curBattleInfo[0].attackData["Type"])//物理攻擊
+            {
+               if(1 == curBattleInfo[0].attackData["IsTravel"]) //遍歷打
+                this.$battleMethod.PhysicBatches( attackRoleModeMap[0],defRoleModeMap);
+               else //一次性
+                this.$battleMethod.PhysicsDisposable( attackRoleModeMap[0],defRoleModeMap);
             }
-            else {
-                this.$battleMethod.RoleAuxiliary(null, null);
+            else //法術攻擊
+            {
+               if(1 == curBattleInfo[0].attackData["IsTravel"]) //遍歷打
+               this.$battleMethod.magicBatches( attackRoleModeMap[0],defRoleModeMap);
+               else //一次性
+               this.$battleMethod.magicDisposable(attackRoleModeMap[0],defRoleModeMap);
             }
-        }
+
+           }
+           else //如果是輔助
+           {
+               this.$battleMethod.RoleAuxiliary(null,null);
+           }
+
+       }
+       */
     };
     /**
      * 结束战斗

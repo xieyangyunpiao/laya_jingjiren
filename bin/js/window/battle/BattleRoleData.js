@@ -2,13 +2,14 @@
 * tang 战斗角色数据;
 */
 var BattleRoleData = /** @class */ (function () {
-    function BattleRoleData() {
+    function BattleRoleData(data) {
         this.$bleed = 100; //血量
         this.$speed = 10; //速度(控制出手顺序)
         this.$attackBool = 1; //本回合是否攻击过(1:未攻击 0:已攻击)
         this.$die = 1; //角色是否死亡(1.未死亡，0死亡)
         this.$bufferDic = new Laya.Dictionary();
         this.$attackData = {};
+        this.$ID = data.id;
     }
     Object.defineProperty(BattleRoleData.prototype, "attackBool", {
         get: function () { return this.$attackBool; },
@@ -50,6 +51,16 @@ var BattleRoleData = /** @class */ (function () {
          */
         get: function () {
             return this.$defInfo;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(BattleRoleData.prototype, "ID", {
+        /**
+         * 返回角色数据
+         */
+        get: function () {
+            return this.$ID;
         },
         enumerable: true,
         configurable: true

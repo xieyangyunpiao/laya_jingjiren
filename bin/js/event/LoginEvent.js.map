@@ -1,1 +1,1 @@
-{"version":3,"file":"LoginEvent.js","sourceRoot":"","sources":["../../../src/event/LoginEvent.ts"],"names":[],"mappings":"AAAA;;EAEE;AACF;IACI;IAEA,CAAC;IACL,iBAAC;AAAD,CAAC,AAJD,IAIC"}
+{"version":3,"file":"LoginEvent.js","sourceRoot":"","sources":["../../../src/event/LoginEvent.ts"],"names":[],"mappings":"AAAA;;EAEE;AACF;IAII;IAGA,CAAC;IAJa,0BAAe,GAAO,iBAAiB,CAAC,CAAA,QAAQ;IAKlE,iBAAC;CAAA,AARD,IAQC"}

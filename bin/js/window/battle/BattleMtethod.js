@@ -8,25 +8,46 @@ var BattleMtethod = /** @class */ (function () {
      * 角色合擊
      */
     BattleMtethod.prototype.RolePunch = function (attackRoleMap, defRoleMap) {
-        Laya.Tween.to(attackRoleMap[0], { x: 600, y: 150 }, 500, null, null, null, true, true);
-        Laya.timer.once(1000, this, function () {
-            for (var j = 0; j < defRoleMap.length; j++) {
-                defRoleMap[j].playGethitAnimation(1, 1);
+        /*
+
+        Laya.Tween.to(attackRoleMap[0],{x:200,y:150},500,null,null,null,true,true)
+        Laya.timer.once(1000,this,function()//播放受击特效
+        {
+            for(let j = 0; j < defRoleMap.length;j++)
+            {
+                defRoleMap[j].playGethitAnimation(1,1);
             }
-        });
-        Laya.Tween.to(attackRoleMap[1], { x: 600, y: 250 }, 500, null, Laya.Handler.create(this, function () {
-            for (var i = 0; i < attackRoleMap.length - 1; i++) {
-                attackRoleMap[i].playAttackAnimation("skill", function (target) {
-                    Laya.Tween.to(target, { x: target.startX, y: target.startY }, 500, null, Laya.Handler.create(this, function () {
-                        CEventManager.inst.dispatchEvent(Core.inst.wndFactory.getWindowByID(CWindowID.BATTLE_WINDOW), BattleEvent.BATTLE_STEP_COM);
-                        for (var j = 0; j < defRoleMap.length; j++) {
-                            defRoleMap[j].playGethitAnimation(1, 1);
-                        }
-                    }, null, true), null, true, true);
-                }, attackRoleMap[i]);
-            }
-            //角色移动完毕回调  
-        }, null, true));
+
+        })
+        Laya.Tween.to(attackRoleMap[1],{x:200,y:250},500,null,Laya.Handler.create(this,function()
+        {
+           attackRoleMap[0].playAttackAnimation("show")
+           for(let i = 1;i < attackRoleMap.length;i++)
+           {
+           attackRoleMap[i].playAttackAnimation("show",function(target:BattleRole)
+           {
+               for(let  i =0 ;i < attackRoleMap.length;i++)
+               {
+        
+               }
+
+           }, attackRoleMap[i]);
+        }
+          //角色移动完毕回调
+        },null,true))
+           
+*/
+        var ske = Core.inst.resource.getSpineResource("ani/role/1/1.sk").buildArmature(0);
+        Laya.stage.addChild(ske);
+        ske.x = 100;
+        ske.y = 100;
+        CUtil.Log(ske.getAniNameByIndex(0));
+        ske.play("atk", false);
+        ske.on(Laya.Event.LABEL, this, function (totalFrame, e) {
+            if (ske.player.currentKeyframeIndex == totalFrame)
+                return;
+            CUtil.Log("发动攻击:" + e.name + ske.player.currentKeyframeIndex);
+        }, [ske.total]);
     };
     /**
      * 角色治療

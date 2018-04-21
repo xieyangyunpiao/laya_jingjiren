@@ -22,6 +22,7 @@ class NetCode {
     public static WSM_S_ONLINE_OK = 15020;// 上线成功
     public static WSM_S_LOGIN_OK = 15021;// 玩家登陆成功收到的第一条消息
     public static WSM_C_HEART: number = 15022;//心跳
+    public static WSM_S_Drop = 15023;//掉落
 
     public static WSM_C_AUTH = 10001;// client request login account
     public static WSM_S_AUTH_RULT = 10002;// 登陆结果

@@ -1,0 +1,23 @@
+D .
+D loginview
+P 239C6CBD btn_bule.png
+P 0796A9FF btn_green.png
+P 508949E0 btn_qunren.png
+P C63123D3 btn_saiz.png
+P 1AB3641A btn_xuan.png
+R F4FF93B3 cxjwsreet.png
+R 7E53B8C5 denglu.jpg
+P 90E2BA2A diban1.png
+P EB5CD69E hei.png
+P EF621225 huanqu.png
+P EFDE3ACC id.png
+P C5A6C5EE kuang.png
+P B07F70E7 new1.png
+P 5655FE74 shuru.png
+P FEC5F7F5 startgame.png
+P 843B2AAF tbiaoti.png
+P 5866FAEB tswhe.png
+P 65832255 xin.png
+P 611FA518 zi.png
+D main
+R 40065163 bg.jpg

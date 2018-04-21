@@ -22,30 +22,32 @@ var NetSocket = /** @class */ (function () {
     发送消息
      */
     NetSocket.prototype.send = function (data) {
-        this.$m_socket.send(data);
+        var strMsg = JSON.stringify(data);
+        this.$m_socket.send(strMsg);
     };
     /**
      * 连接服务器成功
      */
     NetSocket.prototype.connectServerSucc = function () {
-        //console.log("连接服务器成功")
-        // CLayerMananger.inst.openWindowByID(CWindowID.LOGIN_WINDOW,null);
-        Laya.timer.loop(500, this, this.userHeartUpdata);
+        console.log("连接服务器成功");
+        Core.inst.handler.loginHandler.send_10001();
+        //CEventManager.inst.dispatchEvent(Core.inst.wndFactory.getWindowByID(CWindowID.LOGIN_WINDOW),LoginEvent.ROLE_LOGIN_SUCC)
     };
     /**
      * 用户心跳更新
      */
     NetSocket.prototype.userHeartUpdata = function () {
         var msg = new Object();
-        // msg["msgid"] = NetCode.C_USER_HEART;
+        //  msg["msgid"] = NetCode.C_USER_HEART;
         this.$m_socket.send(msg);
     };
-    NetSocket.prototype.startConnect = function () {
-        this.$m_socket.connectByUrl("ws://192.168.0.217:9001");
+    NetSocket.prototype.startConnect = function (addr) {
+        this.$m_socket.connectByUrl(addr); //"ws://192.168.0.217:9001"
     };
     //======接受到服务器发送的消息========
     NetSocket.prototype.reveveiMessage = function (message) {
         var msgobj = JSON.parse(message);
+        CUtil.Log("接收到消息:" + msgobj["msgid"]);
         var fun = CHandler.msgHandler.get(msgobj["msgid"]);
         fun(msgobj);
         msgobj = null;

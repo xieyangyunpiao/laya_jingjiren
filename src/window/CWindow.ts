@@ -13,12 +13,12 @@ class CWindow  extends Laya.Sprite
     protected $windOpen:boolean = false;//窗口是否打开
     protected $childWinDic:Laya.Dictionary;//子界面映射表
     protected $winResUrl:Array<any>;//界面资源路径[{type..,url..}]
-    protected $cloneWinResUrl:Array<any>;
+    protected $cloneWinResUrl:Array<any>;//界面资源路径副本
     protected $isWinClose:boolean=true;//是否支持统一关闭操作
     protected $winPreOpenTimer:any=null;//界面上次打开时间(用于资源释放的依据)
     protected $winOpenNum:any=0;//界面打开次数(用于资源释放的依据)
     protected $windID:any ;//界面ID
-    protected $data:any;//界面数据
+    protected $data:any=null;//界面数据
     protected $winValue:any = 2;//界面权重 1:核心界面 2:普通界面,3:立即销货界面 (用于资源释放的依据)
     protected $eventMap:Array<any>=[];//注册事件映射表[{target:..,caller:....,type:...,fun:...}]
     protected $ui:any;
@@ -197,6 +197,6 @@ class CWindow  extends Laya.Sprite
     */
     public set data(value:any)
     {
-      
+      this.$data =value;
     }
 }

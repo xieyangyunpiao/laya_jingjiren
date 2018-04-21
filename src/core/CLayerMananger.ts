@@ -160,16 +160,17 @@ class CLayerMananger extends Laya.Sprite
         {
         winDic.set(winid,Core.inst.wndFactory.getWindowByID(winid));
         win =winDic.get(winid);
+        win.data = data;
         win.windID = winid;
         }
         else
         {
-        win =winDic.get(winid);    
+        win =winDic.get(winid);
+        win.data = data;    
         win.globalInit();
         }
         if(true == win.windOpen)//界面已经打开
         return false;
-        win.data = data;
         win.windOpen = true;
         win.winOpenNum = win.winOpenNum+1;
         this.$windowContaion.addChild(win);

@@ -1,5 +1,5 @@
 /*
-* name;
+* tang 游戏登陆界面;
 */
 class LoginWindow extends CWindow
 {
@@ -12,42 +12,45 @@ class LoginWindow extends CWindow
     protected instanceinit():void 
     { 
         this.$ui = new ui.login.LoginWindowUI();
-        this.$winValue = CWindow.WINDOW_TYPE_GARBAGE;;//界面类型为关闭立即销毁界面
         this.addChild(this.$ui);
-        this.$ui.startGameBtn.clickFun = this.clickStartGameCall;
-        this.startPreLoader();
-        Core.inst.handler.LoginHandler.send_10001
-
+        this.$winValue = CWindow.WINDOW_TYPE_GARBAGE;;//界面类型为关闭立即销毁界面
+        this.$ui.startGameBtn.clickFun = this.clickStartGameCall.bind(this);
+        this.$eventMap.push({target:this.$ui.selectserver,caller:this,type:Laya.Event.CLICK,fun:this.clickServerList});
+        this.$eventMap.push({target:this,caller:this,type:LoginEvent.ROLE_LOGIN_SUCC,fun:this.roleLoginServerSucc});
+        if(null != this.$data)
+        this.$ui.servername.text = this.$data.name
     }
-
+  /**
+   * 点击开始游戏
+   */
     private clickStartGameCall():void 
     {
-
-      Core.inst.layer.closeWindowByID(CWindowID.LOGIN_WINDOW)
+      if(null == this.$data)
+      {
+        Core.inst.layer.openWindowByID(CWindowID.LOGIN_SERVERLIST_WINDOW,null)
+      }
+      else
+      {
+        GameConfig.serverid = this.$data.id
+        Core.inst.net.startConnect("ws://"+this.$data["addr"])
+      }
     }
     /**
-     * 开始预加载
+     * 点击选择服务器
      */
-    private startPreLoader():void 
+    private clickServerList():void 
     {
-        let preloaderMap:Array<any> =[];
-        let loaderArr:Array<any>=[];
-        preloaderMap.push("table/language.json:1")
-       // preloaderMap.push("ani/role/60/skeleton.sk:7")
-        for(let i = 0;i < preloaderMap.length ;i++)
-        {
-          let configMap:Array<any>=String(preloaderMap[i]).split(":");
-          let type:any = configMap[1];
-          let loaderData:LoaderData = new LoaderData();
-          loaderData.LoaderType = type-0;
-          loaderData.LoaderUrl = configMap[0];
-          loaderArr.push(loaderData);
-        }
-        CUtil.Log("开始加載:"+new Date())
-        Core.inst.load.setPreLoaderRes(loaderArr);
-        loaderArr = null;
+      Core.inst.layer.openWindowByID(CWindowID.LOGIN_SERVERLIST_WINDOW,null)
     }
-
+   /**
+    * 角色登陆服务器成功
+    */
+    private roleLoginServerSucc():void 
+    {
+        CUtil.Log("角色成功登陆服务器")
+       Core.inst.layer.openWindowByID(CWindowID.MAIN_WINDOW,null)
+    }
+    
     public controlRecover():void
     {
         super.controlRecover();

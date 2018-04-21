@@ -9,7 +9,7 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 /*
-* name;
+* tang 游戏登陆界面;
 */
 var LoginWindow = /** @class */ (function (_super) {
     __extends(LoginWindow, _super);
@@ -18,35 +18,39 @@ var LoginWindow = /** @class */ (function (_super) {
     }
     LoginWindow.prototype.instanceinit = function () {
         this.$ui = new ui.login.LoginWindowUI();
+        this.addChild(this.$ui);
         this.$winValue = CWindow.WINDOW_TYPE_GARBAGE;
         ; //界面类型为关闭立即销毁界面
-        this.addChild(this.$ui);
-        this.$ui.startGameBtn.clickFun = this.clickStartGameCall;
-        this.startPreLoader();
-        Core.inst.handler.LoginHandler.send_10001;
-    };
-    LoginWindow.prototype.clickStartGameCall = function () {
-        Core.inst.layer.closeWindowByID(CWindowID.LOGIN_WINDOW);
+        this.$ui.startGameBtn.clickFun = this.clickStartGameCall.bind(this);
+        this.$eventMap.push({ target: this.$ui.selectserver, caller: this, type: Laya.Event.CLICK, fun: this.clickServerList });
+        this.$eventMap.push({ target: this, caller: this, type: LoginEvent.ROLE_LOGIN_SUCC, fun: this.roleLoginServerSucc });
+        if (null != this.$data)
+            this.$ui.servername.text = this.$data.name;
     };
     /**
-     * 开始预加载
+     * 点击开始游戏
      */
-    LoginWindow.prototype.startPreLoader = function () {
-        var preloaderMap = [];
-        var loaderArr = [];
-        preloaderMap.push("table/language.json:1");
-        // preloaderMap.push("ani/role/60/skeleton.sk:7")
-        for (var i = 0; i < preloaderMap.length; i++) {
-            var configMap = String(preloaderMap[i]).split(":");
-            var type = configMap[1];
-            var loaderData = new LoaderData();
-            loaderData.LoaderType = type - 0;
-            loaderData.LoaderUrl = configMap[0];
-            loaderArr.push(loaderData);
+    LoginWindow.prototype.clickStartGameCall = function () {
+        if (null == this.$data) {
+            Core.inst.layer.openWindowByID(CWindowID.LOGIN_SERVERLIST_WINDOW, null);
         }
-        CUtil.Log("开始加載:" + new Date());
-        Core.inst.load.setPreLoaderRes(loaderArr);
-        loaderArr = null;
+        else {
+            GameConfig.serverid = this.$data.id;
+            Core.inst.net.startConnect("ws://" + this.$data["addr"]);
+        }
+    };
+    /**
+     * 点击选择服务器
+     */
+    LoginWindow.prototype.clickServerList = function () {
+        Core.inst.layer.openWindowByID(CWindowID.LOGIN_SERVERLIST_WINDOW, null);
+    };
+    /**
+     * 角色登陆服务器成功
+     */
+    LoginWindow.prototype.roleLoginServerSucc = function () {
+        CUtil.Log("角色成功登陆服务器");
+        Core.inst.layer.openWindowByID(CWindowID.MAIN_WINDOW, null);
     };
     LoginWindow.prototype.controlRecover = function () {
         _super.prototype.controlRecover.call(this);

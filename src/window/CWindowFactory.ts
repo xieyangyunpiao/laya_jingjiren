@@ -49,7 +49,7 @@ class CWindowFactory
       {
           let win:CWindow = this.$winDic.get(this.$winDic.keys[j]);
           //=======界面资源释放:界面没有打开，打开次数小于所有界面的平均值，权重值为普通界面，距离上次打开超过1分钟========
-          if(false == win.windOpen && win.winOpenNum < aveOpenNum && 1 != win.winValue && new Date().getTime()-win.winOpenTimer >= 60000)
+          if(false == win.windOpen && win.winOpenNum < aveOpenNum && 1 != win.winValue && new Date().getTime()-win.winOpenTimer >= 30000)
           {
               CEventManager.inst.dispatchEvent(Core.inst.layer,WindowEvent.WINDOW_RESOURCE_RELEASE,[CLayerMananger.LayaerType_Window,win.windID]);
               Core.inst.resource.JsonResRelase(win.winResUrl);

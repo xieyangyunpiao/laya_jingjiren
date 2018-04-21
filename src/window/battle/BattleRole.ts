@@ -10,11 +10,11 @@ class BattleRole extends Laya.Sprite
     private $startX:any;
     private $startY:any;
     
-    constructor(roleData:BattleRoleData)
+    constructor(roleinfo:BattleRoleData)
     {
       super();
-      this.$roleData = roleData;
-      this.$skeleton = CResourceManager.inst.getSpineResource("ani/role/59/59.sk").buildArmature(0);
+      this.$roleData = roleinfo;
+      this.$skeleton = CResourceManager.inst.getSpineResource("ani/role/"+roleinfo.ID+"/"+roleinfo.ID+".sk").buildArmature(0);
       this.$skeleton.scaleX = this.$skeleton.scaleY = 0.5;
       this.$skeleton.play("stand",true)
       this.addChild(this.$skeleton)
@@ -22,6 +22,7 @@ class BattleRole extends Laya.Sprite
       this.$bleedSp.graphics.clear();
       this.$bleedSp.graphics.drawRect(-50,-120,100,10,'#FF00FF')
       this.addChild(this.$bleedSp);
+      roleinfo = null;
       
     }
 
@@ -53,10 +54,12 @@ class BattleRole extends Laya.Sprite
     public playGethitAnimation(type:any,hurt:any):void 
     {
 
-       this.$hurtSkeleton =CResourceManager.inst.getSpineResource("ani/role/60/skeleton.sk").buildArmature(0);
+       this.$hurtSkeleton =CResourceManager.inst.getSpineResource("ani/role/"+this.$roleData.ID+"-1/"+this.$roleData.ID+"-1.sk").buildArmature(0);
        this.$hurtSkeleton.play(0,false)
+       /*
        this.$hurtSkeleton.on(Laya.Event.STOPPED,this,function()
        {
+         
          this.$roleData.bleed-=100;
          if(0 == this.$roleData.bleed)
          {
@@ -65,10 +68,11 @@ class BattleRole extends Laya.Sprite
          }
          this.$hurtSkeleton.destroy();
          this.$hurtSkeleton.removeSelf();
-         })
+        })
+      
        this.addChild(this.$hurtSkeleton)
        this.$hurtSkeleton.y =-50
-      
+       */
     }
     /**
      * 播放增益动画

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>新登录</title>
+
+    <script typet="text/javascript" src="jquery-3.2.1.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#btn").click(function () {
+                var username = $.trim($("#txt_username").val());
+
+                if (username == "") {
+                    alert("账号不能为空")
+                } else {
+                    var username = "dev."+username;
+                    window.localStorage.setItem("sessionid", 1)
+                    window.localStorage.setItem("ptuid", username)
+                    window.localStorage.setItem("token", "123")
+                    window.localStorage.setItem("debug", 1)
+                    window.localStorage.setItem("isactive", 1)
+                    window.location.href = "index.html?apk=0&channel=dev&debug=2"
+                }
+
+            })
+        })
+    </script>
+</head>
+
+<body class="index">
+
+    <div class="logins">
+        <div>
+            <input class="i-login" placeholder="账号" type="text" name="txt_username" id="txt_username">
+            <button id="btn">登录</button>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
+
+<script>
+
+</script>

@@ -9,11 +9,12 @@ class Core
     private $layer:CLayerMananger;//層級管理器
     private $handler:CHandlerFactory;//通信模塊
     private $msg:CMessageFactory;//消息模塊
+    private $timer:CTimerManager;//延迟管理器
     private $wndFactory:CWindowFactory;//窗口管理器
     private $dialogFactory:CDialogFactory;//彈窗管理器
     private $nagivaFactory:CNagivatorFactory;//導航管理器
     private $load:CLoaderManager;//加載管理
-
+    private $gMe:CCharacter;
     private static $inst:Core = null;
     private static $open:boolean = false;
     constructor()
@@ -29,6 +30,8 @@ class Core
          this.$load =CLoaderManager.inst;
          this.$resource = CResourceManager.inst;
          this.$layer = CLayerMananger.inst;
+         this.$timer = CTimerManager.inst;
+         this.$gMe = new CCharacter();
          Core.$inst = this;
          this.init();
     }
@@ -37,7 +40,7 @@ class Core
     {
         Laya.stage.addChild(this.$layer)
     }
-
+    
 
     public static get inst():Core
     {
@@ -62,6 +65,10 @@ class Core
     public get nagivatoryFactory():CNagivatorFactory{return this.$nagivaFactory};
 
     public get load():CLoaderManager{return this.$load}
+
+    public get time():CTimerManager{return this.$timer}
+
+    public get gMe():CCharacter{return this.$gMe}
 
 
 }

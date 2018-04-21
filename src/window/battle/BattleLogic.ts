@@ -50,6 +50,7 @@ class BattleLogic
     private getDefRole(attackRole:BattleRoleData):Array<BattleRoleData>
     {
         let defArr:Array<BattleRoleData>=[];
+        /*
         if(1 == attackRole.attackData["DamageType"])//攻擊目標陣營
         {
 
@@ -58,6 +59,7 @@ class BattleLogic
         {
 
         }
+        */
         attackRole = null;
         return  defArr;
     }

@@ -16,12 +16,6 @@ var LoginMessage = /** @class */ (function (_super) {
     function LoginMessage() {
         return _super.call(this) || this;
     }
-    Object.defineProperty(LoginMessage.prototype, "revcevidata", {
-        set: function (valu) {
-        },
-        enumerable: true,
-        configurable: true
-    });
     return LoginMessage;
 }(CMessage));
 //# sourceMappingURL=LoginMessage.js.map

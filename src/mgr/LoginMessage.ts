@@ -7,8 +7,4 @@ class LoginMessage extends CMessage
     {
         super();
     }
-    public set revcevidata(valu:any)
-    {
-
-    }
 }

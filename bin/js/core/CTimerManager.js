@@ -6,13 +6,13 @@ var CTimerManager = /** @class */ (function () {
         if (false == CTimerManager.$open) {
             console.log("错误实例化CTimerManager,请通过CTimerMannager.inst实例化");
         }
-        CTimerManager.$inst = this;
         Laya.timer.loop(1000, this, this.timerFunCall);
         this.$timerFunDic = new Laya.Dictionary();
+        CTimerManager.$inst = this;
     }
     Object.defineProperty(CTimerManager, "inst", {
         get: function () {
-            false == CTimerManager.$open && null == CTimerManager.$open ? (CTimerManager.$open = true) && new CTimerManager() : 0;
+            false == CTimerManager.$open && null == CTimerManager.$inst ? (CTimerManager.$open = true) && new CTimerManager() : 0;
             return CTimerManager.$inst;
         },
         enumerable: true,

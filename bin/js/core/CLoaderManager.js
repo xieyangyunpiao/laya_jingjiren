@@ -109,14 +109,15 @@ var CLoaderManager = /** @class */ (function () {
         if (null != this.$preLoaderMap) {
             var index = this.$preLoaderMap.indexOf(loaderData);
             if (-1 != index) {
-                var loadWin = Core.inst.wndFactory.getWindowByID(CWindowID.LODING_WINDOW);
-                loadWin.loaderPercent = (loaderData.ExtarData - this.$preLoaderMap.length) / loaderData.ExtarData;
+                //  let loadWin:LodingWindow = Core.inst.wndFactory.getWindowByID(CWindowID.LODING_WINDOW);
+                //  loadWin.loaderPercent = (loaderData.ExtarData - this.$preLoaderMap.length)/loaderData.ExtarData  
                 this.$preLoaderMap.splice(index, 1);
                 //    CUtil.Log("预加载资源:"+loaderData.LoaderUrl+"加载完毕")
             }
             if (0 == this.$preLoaderMap.length) {
                 this.$preLoaderMap = null;
                 CUtil.Log("所有预加载资源加载完毕:" + new Date());
+                Core.inst.layer.openWindowByID(CWindowID.BATTLE_WINDOW, null);
                 //  Core.inst.layer.openWindowByID(CWindowID.BATTLE_WINDOW,null);
             }
         }
@@ -164,6 +165,14 @@ var CLoaderManager = /** @class */ (function () {
             this.addLoader(loaderData);
         }
         preMap = null;
+    };
+    /**
+     * 返回预加载资源是否加载完成
+     */
+    CLoaderManager.prototype.getPreLoaderComBool = function () {
+        if (null != this.$preLoaderMap)
+            return false;
+        return true;
     };
     //========添加加载=========
     CLoaderManager.prototype.addLoader = function (loaderData) {

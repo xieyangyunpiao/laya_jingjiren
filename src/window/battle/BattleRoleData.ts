@@ -14,12 +14,14 @@ class BattleRoleData{
     private $attackData:any;//技能方面的數據
     private $die:any =1//角色是否死亡(1.未死亡，0死亡)
     private $bufferDic:Laya.Dictionary;//buffer狀態
-    constructor()
+    private $ID:any;//角色ID
+    constructor(data:any)
     {
          this.$bufferDic = new Laya.Dictionary();
          this.$attackData ={};
-    }
+         this.$ID =data.id;
 
+    }
     public get attackBool():number{return this.$attackBool}
     public set attackBool(value:number){this.$attackBool =value}
 
@@ -45,7 +47,13 @@ class BattleRoleData{
     public get defInfo():any
     {
         return this.$defInfo;
-
+    }
+   /**
+    * 返回角色数据
+    */
+    public get ID():any
+    {
+        return this.$ID;
     }
     /**
      * 得到角色所站立的位置

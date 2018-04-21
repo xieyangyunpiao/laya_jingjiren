@@ -39,7 +39,7 @@ class CUtil{
                                 break;
                              battleOne =sourceArr[j][sortAttr[z]["attrname"]];
                              maxValue =sourceArr[index][sortAttr[z]["attrname"]]; 
-                              switch(sortAttr[z]["method"])
+                             switch(sortAttr[z]["method"])
                               {  //method 指定排序方式是由大到小还是由小到大
                                   case ">":
                                   if(battleOne > maxValue)
@@ -72,6 +72,4 @@ class CUtil{
                }
                return sourceArr;
     } 
-
-    
 }

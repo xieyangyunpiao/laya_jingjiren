@@ -13,10 +13,10 @@ var __extends = (this && this.__extends) || (function () {
 */
 var BattleRole = /** @class */ (function (_super) {
     __extends(BattleRole, _super);
-    function BattleRole(roleData) {
+    function BattleRole(roleinfo) {
         var _this = _super.call(this) || this;
-        _this.$roleData = roleData;
-        _this.$skeleton = CResourceManager.inst.getSpineResource("ani/role/59/59.sk").buildArmature(0);
+        _this.$roleData = roleinfo;
+        _this.$skeleton = CResourceManager.inst.getSpineResource("ani/role/" + roleinfo.ID + "/" + roleinfo.ID + ".sk").buildArmature(0);
         _this.$skeleton.scaleX = _this.$skeleton.scaleY = 0.5;
         _this.$skeleton.play("stand", true);
         _this.addChild(_this.$skeleton);
@@ -24,6 +24,7 @@ var BattleRole = /** @class */ (function (_super) {
         _this.$bleedSp.graphics.clear();
         _this.$bleedSp.graphics.drawRect(-50, -120, 100, 10, '#FF00FF');
         _this.addChild(_this.$bleedSp);
+        roleinfo = null;
         return _this;
     }
     Object.defineProperty(BattleRole.prototype, "startX", {
@@ -63,19 +64,25 @@ var BattleRole = /** @class */ (function (_super) {
      * @param hurt 傷害數值
      */
     BattleRole.prototype.playGethitAnimation = function (type, hurt) {
-        this.$hurtSkeleton = CResourceManager.inst.getSpineResource("ani/role/60/skeleton.sk").buildArmature(0);
+        this.$hurtSkeleton = CResourceManager.inst.getSpineResource("ani/role/" + this.$roleData.ID + "-1/" + this.$roleData.ID + "-1.sk").buildArmature(0);
         this.$hurtSkeleton.play(0, false);
-        this.$hurtSkeleton.on(Laya.Event.STOPPED, this, function () {
-            this.$roleData.bleed -= 100;
-            if (0 == this.$roleData.bleed) {
-                CUtil.Log("角色死亡");
-                this.removeSelf();
-            }
-            this.$hurtSkeleton.destroy();
-            this.$hurtSkeleton.removeSelf();
-        });
-        this.addChild(this.$hurtSkeleton);
-        this.$hurtSkeleton.y = -50;
+        /*
+        this.$hurtSkeleton.on(Laya.Event.STOPPED,this,function()
+        {
+          
+          this.$roleData.bleed-=100;
+          if(0 == this.$roleData.bleed)
+          {
+           CUtil.Log("角色死亡")
+           this.removeSelf();
+          }
+          this.$hurtSkeleton.destroy();
+          this.$hurtSkeleton.removeSelf();
+         })
+       
+        this.addChild(this.$hurtSkeleton)
+        this.$hurtSkeleton.y =-50
+        */
     };
     /**
      * 播放增益动画

@@ -15,8 +15,8 @@ var CResourceManager = /** @class */ (function () {
             Laya.ResourceManager.systemResourceManager.autoReleaseMaxSize = 180 * 1024 * 1024;
         else
             Laya.ResourceManager.systemResourceManager.autoReleaseMaxSize = window["conch"].config.getAvalidMem() - 1024 * 50;
-        Laya.AtlasResourceManager.atlasLimitWidth = 256;
-        Laya.AtlasResourceManager.atlasLimitHeight = 256;
+        //   Laya.AtlasResourceManager.atlasLimitWidth = 256;
+        //   Laya.AtlasResourceManager.atlasLimitHeight = 256;
         Laya.alertGlobalError = true; //捕获全局错误提示（用于移动端）
         CResourceManager.$inst = this;
     }
@@ -59,7 +59,7 @@ var CResourceManager = /** @class */ (function () {
                 typeDic.set(url, loaderData);
                 break;
         }
-        CUtil.Log("資源所占用内存:" + (Laya.ResourceManager.systemResourceManager.memorySize / (1024 * 1024)) + "M");
+        CUtil.Log("資源所占用内存:" + Math.ceil(Laya.ResourceManager.systemResourceManager.memorySize / (1024 * 1024)) + "M");
         loaderData = null;
     };
     /**
@@ -255,9 +255,10 @@ var CResourceManager = /** @class */ (function () {
             var url = urlMap[i].url;
             jsonDic.remove(url);
             Laya.loader.clearRes(url, true);
-            CUtil.Log("释放资源:" + url);
+            CUtil.Log("释放资源:" + url + ":" + Laya.Loader.getRes(url));
             jsonDic = null;
         }
+        urlMap = null;
     };
     CResourceManager.$open = false;
     CResourceManager.$inst = null;

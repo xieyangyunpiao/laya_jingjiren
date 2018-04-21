@@ -54,7 +54,7 @@ class BattleWindow extends CWindow
 
     public set data(value:any)
     {
-        value = {roleData:[[new BattleRoleData(),new BattleRoleData(),new BattleRoleData(),new BattleRoleData()],[new BattleRoleData(),new BattleRoleData(),new BattleRoleData(),new BattleRoleData()]]}
+        value = {roleData:[[new BattleRoleData({id:59}),new BattleRoleData({id:60}),new BattleRoleData({id:59}),new BattleRoleData({id:59})],[new BattleRoleData({id:60}),new BattleRoleData({id:60}),new BattleRoleData({id:60}),new BattleRoleData({id:60})]]}
         this.$battleData = value;
         let arr:Array<any>=[];
         let roleData:Array<BattleRoleData>=value.roleData; //0:自身角色數據 1:地方角色数据
@@ -72,7 +72,7 @@ class BattleWindow extends CWindow
                    battleRole.scaleX = -1;
                }
                battleRole.y = j * 100;
-               battleRole.x = i * 800;
+               battleRole.x = i * 600;
                battleRole.startX = battleRole.x;
                battleRole.startY = battleRole.y;
             }
@@ -94,6 +94,8 @@ class BattleWindow extends CWindow
      */
     private startBattle()
     {
+        this.$battleMethod.RolePunch([this.$battleRoleMap[0][0],this.$battleRoleMap[0][1]],[this.$battleRoleMap[1][0]]);
+        /*
        let curBattleInfo:Array<any>= this.$battleLogic.getlogicBattleData();
        let attackRoleMap:Array<BattleRoleData> = curBattleInfo[0];
        let defRoleDataMap:Array<BattleRoleData> = curBattleInfo[1];
@@ -136,7 +138,7 @@ class BattleWindow extends CWindow
            }
 
        }
-       
+       */
     }
     /**
      * 结束战斗

@@ -9,7 +9,7 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 /*
-* name;
+* tang 战斗通信;
 */
 var BattleHandler = /** @class */ (function (_super) {
     __extends(BattleHandler, _super);

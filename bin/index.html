@@ -34,6 +34,7 @@
     <script type="text/javascript" src="libs/laya.tiledmap.js"></script>
 	<!--提供了制作UI的各种组件实现-->
     <script type="text/javascript" src="libs/laya.ui.js"></script>
+	<script type="text/javascript" src="libs/laya.debugtool.js"></script>
 	<!-- 物理引擎matter.js -->
 	<!--用户自定义顺序文件添加到这里-->
 	<!--jsfile--Custom-->
@@ -55,7 +56,6 @@
 	<script src="js/mgr/CMessageFactory.js"></script>
 	<script src="js/mgr/CMessage.js"></script>
 	<script src="js/handler/CHandlerFactory.js"></script>
-	<script src="js/handler/CHandler.js"></script>
 	<script src="js/event/WindowEvent.js"></script>
 	<script src="js/event/LoginEvent.js"></script>
 	<script src="js/event/CEventManager.js"></script>
@@ -74,12 +74,19 @@
 	<script src="js/core/CPathConfig.js"></script>
 	<script src="js/core/Core.js"></script>
 	<script src="js/core/CLoaderManager.js"></script>
+	<script src="js/core/CCharacter.js"></script>
 	<script src="js/core/CLayerMananger.js"></script>
 	<script src="js/core/CObjctClone.js"></script>
 	<script src="js/dialog/CDialog.js"></script>
 	<script src="js/handler/CHandler.js"></script>
+	<script src="js/handler/ActivateHandler.js"></script>
 	<script src="js/handler/BattleHandler.js"></script>
+	<script src="js/handler/ChapterHandler.js"></script>
+	<script src="js/handler/HeroHandler.js"></script>
 	<script src="js/handler/LoginHandler.js"></script>
+	<script src="js/handler/MailHandler.js"></script>
+	<script src="js/handler/PackageHandler.js"></script>
+	<script src="js/handler/TerritoryHandler.js"></script>
 	<script src="js/mgr/LoginMessage.js"></script>
 	<script src="js/window/CWindow.js"></script>
 	<script src="js/nagivator/CNagivator.js"></script>
@@ -93,7 +100,11 @@
 	<script src="js/window/battle/BattleRole.js"></script>
 	<script src="js/window/battle/BattleWindow.js"></script>
 	<script src="js/window/loding/LodingWindow.js"></script>
+	<script src="js/window/login/item/ServerListItem.js"></script>
+	<script src="js/window/login/LoginGameCopyWindow.js"></script>
+	<script src="js/window/login/LoginServerListWindow.js"></script>
 	<script src="js/window/login/LoginWindow.js"></script>
+	<script src="js/window/main/MainWindow.js"></script>
 	<!--jsfile--endTag-->
 
 	<!--启动类添加到这里-->

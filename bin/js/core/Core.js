@@ -14,6 +14,8 @@ var Core = /** @class */ (function () {
         this.$load = CLoaderManager.inst;
         this.$resource = CResourceManager.inst;
         this.$layer = CLayerMananger.inst;
+        this.$timer = CTimerManager.inst;
+        this.$gMe = new CCharacter();
         Core.$inst = this;
         this.init();
     }
@@ -78,6 +80,16 @@ var Core = /** @class */ (function () {
     ;
     Object.defineProperty(Core.prototype, "load", {
         get: function () { return this.$load; },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Core.prototype, "time", {
+        get: function () { return this.$timer; },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Core.prototype, "gMe", {
+        get: function () { return this.$gMe; },
         enumerable: true,
         configurable: true
     });

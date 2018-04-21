@@ -12,15 +12,15 @@ class CTimerManager
        {
            console.log("错误实例化CTimerManager,请通过CTimerMannager.inst实例化")
        }
-       CTimerManager.$inst = this;
        Laya.timer.loop(1000,this,this.timerFunCall);
        this.$timerFunDic = new Laya.Dictionary();
+       CTimerManager.$inst = this;
     }
 
     public static get inst():CTimerManager
     {
-       false == CTimerManager.$open && null == CTimerManager.$open ? (CTimerManager.$open = true) && new CTimerManager():0
-        return CTimerManager.$inst
+       false == CTimerManager.$open && null == CTimerManager.$inst ? (CTimerManager.$open = true) && new CTimerManager():0
+      return CTimerManager.$inst
     }
 
     private timerFunCall():void 
